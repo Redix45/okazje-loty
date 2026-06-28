@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>✈️ Okazje lotnicze — KTW</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{
+    --bg:#0e1116; --card:#171b22; --line:#262c36; --txt:#e6e9ef; --mut:#8b94a3;
+    --ry:#3b82f6; --wz:#ec4899; --accent:#22d3aa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+  header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  h1{font-size:20px;margin:0}
+  .meta{color:var(--mut);font-size:13px}
+  .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:calc(100vh - 64px)}
+  @media(max-width:900px){.wrap{grid-template-columns:1fr}#map{height:320px}}
+  #map{height:calc(100vh - 64px);position:sticky;top:0}
+  .panel{padding:16px 20px;overflow:auto;max-height:calc(100vh - 64px)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center}
+  .controls label{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:6px}
+  select,input[type=range]{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px}
+  .chip{padding:4px 10px;border-radius:999px;border:1px solid var(--line);cursor:pointer;font-size:12px;user-select:none}
+  .chip.on{background:var(--accent);color:#04201a;border-color:var(--accent);font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .card:hover{border-color:var(--accent)}
+  .city{font-weight:600;font-size:15px}
+  .sub{color:var(--mut);font-size:12px;margin-top:3px}
+  .src{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;margin-left:6px;vertical-align:middle}
+  .src.Ryanair{background:rgba(59,130,246,.18);color:#93c5fd}
+  .src.Wizz{background:rgba(236,72,153,.18);color:#f9a8d4}
+  .price{text-align:right;white-space:nowrap}
+  .pp{font-size:18px;font-weight:700;color:var(--accent)}
+  .tot{font-size:11px;color:var(--mut)}
+  .acts{margin-top:8px;display:flex;gap:8px}
+  .btn{font-size:12px;text-decoration:none;padding:5px 9px;border-radius:7px;border:1px solid var(--line);color:var(--txt)}
+  .btn.book{background:#003b95;border-color:#003b95;color:#fff}
+  .empty{color:var(--mut);padding:30px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>✈️ Okazje lotnicze</h1>
+  <div class="meta" id="meta">ładowanie…</div>
+</header>
+<div class="wrap">
+  <div id="map"></div>
+  <div class="panel">
+    <div class="controls">
+      <span class="chip on" data-src="Ryanair">Ryanair</span>
+      <span class="chip on" data-src="Wizz">Wizz</span>
+      <label>maks zł/os <input type="range" id="price" min="50" max="300" step="10" value="300"><b id="pval">300</b></label>
+      <label>kraj
+        <select id="country"><option value="">wszystkie</option></select>
+      </label>
+      <label>sortuj
+        <select id="sort">
+          <option value="price">cena ↑</option>
+          <option value="date">data wylotu ↑</option>
+        </select>
+      </label>
+    </div>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const PLN = n => Math.round(n).toLocaleString('pl-PL') + ' zł';
+let DATA = {deals:[], origin:'KTW', pax:4}, MAP, MARKERS, OFF = new Set();
+
+const map = L.map('map', {scrollWheelZoom:true}).setView([50, 14], 4);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  {attribution:'© OpenStreetMap © CARTO', maxZoom:10}).addTo(map);
+MARKERS = L.layerGroup().addTo(map);
+
+function visible(){
+  const maxP = +document.getElementById('price').value;
+  const ctry = document.getElementById('country').value;
+  let d = DATA.deals.filter(x => !OFF.has(x.source) && x.price <= maxP && (!ctry || x.country === ctry));
+  const s = document.getElementById('sort').value;
+  d.sort((a,b) => s === 'price' ? a.price - b.price : (a.out_date < b.out_date ? -1 : 1));
+  return d;
+}
+
+function render(){
+  const d = visible();
+  const list = document.getElementById('list');
+  MARKERS.clearLayers();
+  if(!d.length){ list.innerHTML = '<div class="empty">Brak ofert dla tych filtrów.</div>'; return; }
+  list.innerHTML = d.map(x => `
+    <div class="card" data-iata="${x.iata}">
+      <div>
+        <div class="city">${x.city}<span class="src ${x.source}">${x.source}</span></div>
+        <div class="sub">${x.country||''} · ${DATA.origin} → ${x.iata}</div>
+        <div class="sub">🛫 ${x.out_date} → 🛬 ${x.in_date}</div>
+        <div class="acts">
+          <a class="btn book" href="${x.booking}" target="_blank" rel="noopener">🏨 Hotel (${DATA.pax} os.)</a>
+        </div>
+      </div>
+      <div class="price">
+        <div class="pp">${PLN(x.price)}</div>
+        <div class="tot">/os · razem ${PLN(x.total)}</div>
+      </div>
+    </div>`).join('');
+
+  d.forEach(x => {
+    if(x.lat == null || x.lon == null) return;
+    const col = x.source === 'Wizz' ? '#ec4899' : '#3b82f6';
+    L.circleMarker([x.lat, x.lon], {radius:7, color:col, fillColor:col, fillOpacity:.85, weight:1})
+      .bindPopup(`<b>${x.city}</b> (${x.source})<br>${PLN(x.price)}/os · razem ${PLN(x.total)}<br>${x.out_date} → ${x.in_date}<br><a href="${x.booking}" target="_blank">🏨 Hotel</a>`)
+      .addTo(MARKERS);
+  });
+}
+
+document.getElementById('price').addEventListener('input', e => {
+  document.getElementById('pval').textContent = e.target.value; render();
+});
+document.getElementById('country').addEventListener('change', render);
+document.getElementById('sort').addEventListener('change', render);
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+  c.classList.toggle('on');
+  if(c.classList.contains('on')) OFF.delete(c.dataset.src); else OFF.add(c.dataset.src);
+  render();
+}));
+
+fetch('deals.json?_=' + Date.now()).then(r => r.json()).then(j => {
+  DATA = j;
+  document.getElementById('meta').textContent =
+    `${DATA.origin} · ${j.deals.length} ofert · ≤${j.max_price_pln} zł/os · dla ${j.pax} os. · zaktualizowano ${j.generated}`;
+  const cs = [...new Set(j.deals.map(d => d.country).filter(Boolean))].sort();
+  const sel = document.getElementById('country');
+  cs.forEach(c => { const o = document.createElement('option'); o.value = o.textContent = c; sel.appendChild(o); });
+  render();
+}).catch(e => {
+  document.getElementById('meta').textContent = 'Nie wczytano deals.json — uruchom dealfinder.py i serwuj przez http.';
+  document.getElementById('list').innerHTML = '<div class="empty">Brak deals.json. Patrz README (hosting).</div>';
+});
+</script>
+</body>
+</html>

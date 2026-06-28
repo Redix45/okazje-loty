@@ -1,0 +1,13 @@
+# Sekrety / stan runtime — NIE commitować
+seen.json
+run.log
+*.log
+__pycache__/
+*.pyc
+
+# Listy proxy / tokeny / webhooki (gdyby ktoś zapisał lokalnie)
+*proxy*.txt
+*proxies*.txt
+*.token
+.env
+webhook.txt
