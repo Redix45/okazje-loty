@@ -175,16 +175,16 @@
     },
     {
       "source": "Wizz",
-      "city": "Comiso (Sicily)",
-      "country": "Italy",
-      "iata": "CIY",
-      "price": 203.2,
-      "out_date": "2026-08-30",
-      "in_date": "2026-09-02",
-      "lat": 36.99472222222222,
-      "lon": 14.606944444444444,
-      "booking": "https://www.booking.com/searchresults.html?ss=Comiso+%28Sicily%29%2C+Italy&checkin=2026-08-30&checkout=2026-09-02&group_adults=4&no_rooms=1&group_children=0",
-      "total": 812.8
+      "city": "Tirana",
+      "country": "Albania",
+      "iata": "TIA",
+      "price": 192.6,
+      "out_date": "2026-09-08",
+      "in_date": "2026-09-11",
+      "lat": 41.415,
+      "lon": 19.72083333333333,
+      "booking": "https://www.booking.com/searchresults.html?ss=Tirana%2C+Albania&checkin=2026-09-08&checkout=2026-09-11&group_adults=4&no_rooms=1&group_children=0",
+      "total": 770.4
     },
     {
       "source": "Wizz",
@@ -231,11 +231,11 @@
       "country": "Italy",
       "iata": "RMI",
       "price": 203.2,
-      "out_date": "2026-08-12",
+      "out_date": "2026-08-10",
       "in_date": "2026-08-14",
       "lat": 44.020833333333336,
       "lon": 12.612222222222222,
-      "booking": "https://www.booking.com/searchresults.html?ss=Rimini%2C+Italy&checkin=2026-08-12&checkout=2026-08-14&group_adults=4&no_rooms=1&group_children=0",
+      "booking": "https://www.booking.com/searchresults.html?ss=Rimini%2C+Italy&checkin=2026-08-10&checkout=2026-08-14&group_adults=4&no_rooms=1&group_children=0",
       "total": 812.8
     },
     {
@@ -266,16 +266,16 @@
     },
     {
       "source": "Wizz",
-      "city": "Tirana",
-      "country": "Albania",
-      "iata": "TIA",
-      "price": 212.6,
-      "out_date": "2026-09-07",
-      "in_date": "2026-09-11",
-      "lat": 41.415,
-      "lon": 19.72083333333333,
-      "booking": "https://www.booking.com/searchresults.html?ss=Tirana%2C+Albania&checkin=2026-09-07&checkout=2026-09-11&group_adults=4&no_rooms=1&group_children=0",
-      "total": 850.4
+      "city": "Comiso (Sicily)",
+      "country": "Italy",
+      "iata": "CIY",
+      "price": 212.2,
+      "out_date": "2026-08-30",
+      "in_date": "2026-09-02",
+      "lat": 36.99472222222222,
+      "lon": 14.606944444444444,
+      "booking": "https://www.booking.com/searchresults.html?ss=Comiso+%28Sicily%29%2C+Italy&checkin=2026-08-30&checkout=2026-09-02&group_adults=4&no_rooms=1&group_children=0",
+      "total": 848.8
     },
     {
       "source": "Ryanair",
@@ -464,13 +464,13 @@
       "city": "Barcelona El Prat",
       "country": "Spain",
       "iata": "BCN",
-      "price": 287.6,
-      "out_date": "2026-08-25",
-      "in_date": "2026-08-27",
+      "price": 285.6,
+      "out_date": "2026-08-21",
+      "in_date": "2026-08-26",
       "lat": 41.29694444444444,
       "lon": 2.0783333333333336,
-      "booking": "https://www.booking.com/searchresults.html?ss=Barcelona+El+Prat%2C+Spain&checkin=2026-08-25&checkout=2026-08-27&group_adults=4&no_rooms=1&group_children=0",
-      "total": 1150.4
+      "booking": "https://www.booking.com/searchresults.html?ss=Barcelona+El+Prat%2C+Spain&checkin=2026-08-21&checkout=2026-08-26&group_adults=4&no_rooms=1&group_children=0",
+      "total": 1142.4
     },
     {
       "source": "Ryanair",
