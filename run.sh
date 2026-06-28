@@ -5,6 +5,8 @@ set -u
 cd "$(dirname "$0")" || exit 1
 
 export PROXY_FILE="$PWD/proxies.txt"
+# Sekrety (webhook) — opcjonalny plik, NIE w gicie. Patrz secrets.env.example
+[ -f "$PWD/secrets.env" ] && set -a && . "$PWD/secrets.env" && set +a
 DEPLOY_KEY="$HOME/.ssh/okazje_deploy"
 GITSSH="ssh -i $DEPLOY_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 
