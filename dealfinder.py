@@ -151,6 +151,23 @@ def booking_link(deal):
     return "https://www.booking.com/searchresults.html?" + q
 
 
+def flight_link(deal):
+    """Deep-link do kupna lotu (wszyscy 16+ => adults=pax, teens/children=0)."""
+    o = deal["out_date"][:10]
+    i = deal["in_date"][:10]
+    org, dst, pax = CONFIG["origin"], deal["iata"], CONFIG["pax"]
+    if deal["source"] == "Wizz":
+        return (f"https://www.wizzair.com/pl-pl/booking/select-flight/"
+                f"{org}/{dst}/{o}/{i}/{pax}/0/0/null")
+    # Ryanair
+    q = urllib.parse.urlencode({
+        "adults": pax, "teens": 0, "children": 0, "infants": 0,
+        "dateOut": o, "dateIn": i, "isReturn": "true",
+        "isConnectedFlight": "false", "originIata": org, "destinationIata": dst,
+    })
+    return "https://www.ryanair.com/pl/pl/trip/flights/select?" + q
+
+
 # ─────────────────────────── RYANAIR ───────────────────────────
 def _ry_page(df, dt, offset):
     p = {
@@ -387,7 +404,8 @@ def origin_latlon():
 
 
 def enrich(d, olat, olon):
-    out = dict(d, booking=booking_link(d), total=round(d["price"] * CONFIG["pax"], 2))
+    out = dict(d, booking=booking_link(d), flight=flight_link(d),
+               total=round(d["price"] * CONFIG["pax"], 2))
     out["baggage"] = BAGGAGE.get(d["source"], {})
     # Dystans + szacowany czas lotu (≈750 km/h + 35 min kołowanie).
     dist = dur = None
@@ -444,7 +462,8 @@ def post_discord(deals):
                     {"name": "Tam", "value": d["out_date"].replace("T", " "), "inline": True},
                     {"name": "Powrót", "value": d["in_date"].replace("T", " "), "inline": True},
                     {"name": f"Razem ({CONFIG['pax']} os.)", "value": f"{total:.0f} zł", "inline": True},
-                    {"name": "Hotel", "value": f"[Booking 🏨]({booking_link(d)})", "inline": True},
+                    {"name": "Kup lot", "value": f"[🎫 {d['source']}]({flight_link(d)})", "inline": True},
+                    {"name": "Hotel", "value": f"[🏨 Booking]({booking_link(d)})", "inline": True},
                 ],
                 "footer": {"text": f"{CONFIG['origin']} → {d['iata']} · {d['source']}"},
             })

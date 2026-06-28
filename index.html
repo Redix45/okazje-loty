@@ -37,6 +37,7 @@
   .acts{margin-top:8px;display:flex;gap:8px}
   .btn{font-size:12px;text-decoration:none;padding:5px 9px;border-radius:7px;border:1px solid var(--line);color:var(--txt)}
   .btn.book{background:#003b95;border-color:#003b95;color:#fff}
+  .btn.fly{background:#22d3aa;border-color:#22d3aa;color:#04201a;font-weight:600}
   .empty{color:var(--mut);padding:30px;text-align:center}
   .card{cursor:pointer}
   .card.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
@@ -177,6 +178,7 @@ function render(){
         <div class="sub">${x.country||''} · ${DATA.origin} → ${x.iata}</div>
         <div class="sub">🛫 ${x.out_date.slice(0,10)} → 🛬 ${x.in_date.slice(0,10)} · klik = szczegóły + trasa</div>
         <div class="acts">
+          <a class="btn fly" href="${x.flight}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🎫 Kup lot (${x.source})</a>
           <a class="btn book" href="${x.booking}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🏨 Hotel (${DATA.pax} os.)</a>
         </div>
         ${detailHTML(x)}
