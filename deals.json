@@ -257,8 +257,8 @@
       "country": "Netherlands",
       "iata": "MST",
       "price": 167.2,
-      "out_date": "2026-07-24",
-      "in_date": "2026-07-29",
+      "out_date": "2026-08-28",
+      "in_date": "2026-08-31",
       "out_times": [
         "06:30"
       ],
@@ -269,7 +269,7 @@
       "in_arr": "~10:50",
       "lat": 50.91583333333333,
       "lon": 5.776944444444444,
-      "booking": "https://www.booking.com/searchresults.html?ss=Maastricht%2C+Netherlands&checkin=2026-07-24&checkout=2026-07-29&group_adults=4&no_rooms=1&group_children=0",
+      "booking": "https://www.booking.com/searchresults.html?ss=Maastricht%2C+Netherlands&checkin=2026-08-28&checkout=2026-08-31&group_adults=4&no_rooms=1&group_children=0",
       "total": 668.8,
       "baggage": {
         "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
@@ -944,6 +944,34 @@
     },
     {
       "source": "Wizz",
+      "city": "Madrid",
+      "country": "Spain",
+      "iata": "MAD",
+      "price": 275.2,
+      "out_date": "2026-08-19",
+      "in_date": "2026-08-21",
+      "out_times": [
+        "15:15"
+      ],
+      "in_times": [
+        "19:35"
+      ],
+      "out_arr": "~18:36",
+      "in_arr": "~22:56",
+      "lat": 40.493611111111115,
+      "lon": -3.5666666666666664,
+      "booking": "https://www.booking.com/searchresults.html?ss=Madrid%2C+Spain&checkin=2026-08-19&checkout=2026-08-21&group_adults=4&no_rooms=1&group_children=0",
+      "total": 1100.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 2073,
+      "duration_min": 201,
+      "est_arrival": true
+    },
+    {
+      "source": "Wizz",
       "city": "Barcelona El Prat",
       "country": "Spain",
       "iata": "BCN",
@@ -972,34 +1000,6 @@
       },
       "distance_km": 1659,
       "duration_min": 168,
-      "est_arrival": true
-    },
-    {
-      "source": "Wizz",
-      "city": "Madrid",
-      "country": "Spain",
-      "iata": "MAD",
-      "price": 293.2,
-      "out_date": "2026-08-19",
-      "in_date": "2026-08-21",
-      "out_times": [
-        "15:15"
-      ],
-      "in_times": [
-        "19:35"
-      ],
-      "out_arr": "~18:36",
-      "in_arr": "~22:56",
-      "lat": 40.493611111111115,
-      "lon": -3.5666666666666664,
-      "booking": "https://www.booking.com/searchresults.html?ss=Madrid%2C+Spain&checkin=2026-08-19&checkout=2026-08-21&group_adults=4&no_rooms=1&group_children=0",
-      "total": 1172.8,
-      "baggage": {
-        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
-        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
-      },
-      "distance_km": 2073,
-      "duration_min": 201,
       "est_arrival": true
     },
     {
