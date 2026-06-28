@@ -160,7 +160,8 @@ function detailHTML(x){
       <div class="meta2">⏱ czas lotu ${dur} · 📏 ${dist}</div>
       <div class="bag">🧳 Bagaż (${x.source}):
         <b>✅ ${b.free||'—'}</b>
-        <span>➕ ${b.paid||'—'}</span></div>
+        <span>➕ dopłaty (orientacyjnie): ${b.paid||'—'}</span>
+        ${b.note ? `<span class="est" style="display:block;margin-top:3px">⚠️ ${b.note} — dokładna kwota dopiero w rezerwacji</span>` : ''}</div>
     </div>`;
 }
 

@@ -65,15 +65,21 @@ ORIGIN_COORDS = {
     "POZ": (52.4210, 16.8263),
 }
 
-# Zasady bagazu (stale, nie ma w API). Aktualizuj gdy linie zmienia cennik.
+# Zasady bagazu + ORIENTACYJNE doplaty (zl za 1 odcinek/os, ceny dynamiczne!).
+# To widelki — dokladna kwota zalezy od trasy/daty, widoczna dopiero w rezerwacji.
+# Aktualizuj gdy linie zmienia cennik.
 BAGGAGE = {
     "Ryanair": {
         "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
-        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata",
+        "paid": "Priority + bagaż podręczny 10 kg (55×40×20): ~30–100 zł · "
+                "Walizka 20 kg (luk): ~90–250 zł",
+        "note": "ceny za 1 odcinek/os · ×2 (tam i z powrotem)",
     },
     "Wizz": {
         "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
-        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata",
+        "paid": "WIZZ Priority + duża torba 10 kg (55×40×23): ~40–130 zł · "
+                "Walizka 10 kg: ~50–150 zł · 20 kg: ~90–250 zł",
+        "note": "ceny za 1 odcinek/os · ×2 (tam i z powrotem)",
     },
 }
 
