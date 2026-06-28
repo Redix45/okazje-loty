@@ -1,6 +1,8 @@
 {
   "generated": "2026-06-28",
   "origin": "KTW",
+  "origin_lat": 50.483333333333334,
+  "origin_lon": 19.083333333333332,
   "pax": 4,
   "max_price_pln": 300,
   "deals": [
@@ -12,10 +14,25 @@
       "price": 131.2,
       "out_date": "2026-07-23",
       "in_date": "2026-07-25",
+      "out_times": [
+        "06:00"
+      ],
+      "in_times": [
+        "09:00"
+      ],
+      "out_arr": "~07:32",
+      "in_arr": "~10:32",
       "lat": 45.70166666666667,
       "lon": 25.52,
       "booking": "https://www.booking.com/searchresults.html?ss=Brasov%2C+Romania&checkin=2026-07-23&checkout=2026-07-25&group_adults=4&no_rooms=1&group_children=0",
-      "total": 524.8
+      "total": 524.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 714,
+      "duration_min": 92,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -25,10 +42,21 @@
       "price": 138.0,
       "out_date": "2026-08-20T09:55",
       "in_date": "2026-08-23T07:10",
+      "out_arr": "2026-08-20T11:50",
+      "in_arr": "2026-08-23T09:00",
+      "out_times": null,
+      "in_times": null,
       "lat": 50.45916666666667,
       "lon": 4.453888888888889,
       "booking": "https://www.booking.com/searchresults.html?ss=Charleroi%2C+Belgium&checkin=2026-08-20&checkout=2026-08-23&group_adults=4&no_rooms=1&group_children=0",
-      "total": 552.0
+      "total": 552.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 1034,
+      "duration_min": 118,
+      "est_arrival": false
     },
     {
       "source": "Ryanair",
@@ -38,10 +66,21 @@
       "price": 138.0,
       "out_date": "2026-07-06T07:10",
       "in_date": "2026-07-10T06:20",
+      "out_arr": "2026-07-06T08:15",
+      "in_arr": "2026-07-10T07:20",
+      "out_times": null,
+      "in_times": null,
       "lat": 47.43694444444444,
       "lon": 19.255555555555556,
       "booking": "https://www.booking.com/searchresults.html?ss=Budapest%2C+Hungary&checkin=2026-07-06&checkout=2026-07-10&group_adults=4&no_rooms=1&group_children=0",
-      "total": 552.0
+      "total": 552.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 339,
+      "duration_min": 62,
+      "est_arrival": false
     },
     {
       "source": "Ryanair",
@@ -51,10 +90,21 @@
       "price": 138.0,
       "out_date": "2026-07-11T21:00",
       "in_date": "2026-07-16T07:55",
+      "out_arr": "2026-07-11T22:45",
+      "in_arr": "2026-07-16T09:35",
+      "out_times": null,
+      "in_times": null,
       "lat": 45.66833333333333,
       "lon": 9.700277777777776,
       "booking": "https://www.booking.com/searchresults.html?ss=Bergamo%2C+Italy&checkin=2026-07-11&checkout=2026-07-16&group_adults=4&no_rooms=1&group_children=0",
-      "total": 552.0
+      "total": 552.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 878,
+      "duration_min": 105,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -64,10 +114,25 @@
       "price": 138.0,
       "out_date": "2026-09-11",
       "in_date": "2026-09-16",
+      "out_times": [
+        "06:00"
+      ],
+      "in_times": [
+        "08:20"
+      ],
+      "out_arr": "~07:46",
+      "in_arr": "~10:06",
       "lat": 55.74027777777778,
       "lon": 9.151666666666667,
       "booking": "https://www.booking.com/searchresults.html?ss=Billund%2C+Denmark&checkin=2026-09-11&checkout=2026-09-16&group_adults=4&no_rooms=1&group_children=0",
-      "total": 552.0
+      "total": 552.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 882,
+      "duration_min": 106,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -77,10 +142,21 @@
       "price": 158.0,
       "out_date": "2026-08-11T11:00",
       "in_date": "2026-08-15T12:50",
+      "out_arr": "2026-08-11T12:40",
+      "in_arr": "2026-08-15T14:30",
+      "out_times": null,
+      "in_times": null,
       "lat": null,
       "lon": null,
       "booking": "https://www.booking.com/searchresults.html?ss=Aarhus%2C+Denmark&checkin=2026-08-11&checkout=2026-08-15&group_adults=4&no_rooms=1&group_children=0",
-      "total": 632.0
+      "total": 632.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": null,
+      "duration_min": null,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -90,10 +166,28 @@
       "price": 167.2,
       "out_date": "2026-08-29",
       "in_date": "2026-09-03",
+      "out_times": [
+        "13:00",
+        "18:35"
+      ],
+      "in_times": [
+        "15:50",
+        "17:50",
+        "21:25"
+      ],
+      "out_arr": "~15:02",
+      "in_arr": "~17:52",
       "lat": 41.79888888888889,
       "lon": 12.595,
       "booking": "https://www.booking.com/searchresults.html?ss=Rome+Ciampino%2C+Italy&checkin=2026-08-29&checkout=2026-09-03&group_adults=4&no_rooms=1&group_children=0",
-      "total": 668.8
+      "total": 668.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1086,
+      "duration_min": 122,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -103,10 +197,28 @@
       "price": 167.2,
       "out_date": "2026-08-29",
       "in_date": "2026-09-03",
+      "out_times": [
+        "13:00",
+        "18:35"
+      ],
+      "in_times": [
+        "15:50",
+        "17:50",
+        "21:25"
+      ],
+      "out_arr": "~15:01",
+      "in_arr": "~17:51",
       "lat": 41.90277777777778,
       "lon": 12.496388888888887,
       "booking": "https://www.booking.com/searchresults.html?ss=Rome+%28All+Airports%29%2C+Italy&checkin=2026-08-29&checkout=2026-09-03&group_adults=4&no_rooms=1&group_children=0",
-      "total": 668.8
+      "total": 668.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1079,
+      "duration_min": 121,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -116,10 +228,28 @@
       "price": 167.2,
       "out_date": "2026-08-29",
       "in_date": "2026-09-03",
+      "out_times": [
+        "13:00",
+        "18:35"
+      ],
+      "in_times": [
+        "15:50",
+        "17:50",
+        "21:25"
+      ],
+      "out_arr": "~15:03",
+      "in_arr": "~17:53",
       "lat": 41.80027777777777,
       "lon": 12.238888888888889,
       "booking": "https://www.booking.com/searchresults.html?ss=Rome+Fiumicino%2C+Italy&checkin=2026-08-29&checkout=2026-09-03&group_adults=4&no_rooms=1&group_children=0",
-      "total": 668.8
+      "total": 668.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1099,
+      "duration_min": 123,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -129,10 +259,25 @@
       "price": 167.2,
       "out_date": "2026-07-24",
       "in_date": "2026-07-29",
+      "out_times": [
+        "06:30"
+      ],
+      "in_times": [
+        "09:00"
+      ],
+      "out_arr": "~08:20",
+      "in_arr": "~10:50",
       "lat": 50.91583333333333,
       "lon": 5.776944444444444,
       "booking": "https://www.booking.com/searchresults.html?ss=Maastricht%2C+Netherlands&checkin=2026-07-24&checkout=2026-07-29&group_adults=4&no_rooms=1&group_children=0",
-      "total": 668.8
+      "total": 668.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 937,
+      "duration_min": 110,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -142,10 +287,21 @@
       "price": 173.15,
       "out_date": "2026-07-05T23:15",
       "in_date": "2026-07-07T05:55",
+      "out_arr": "2026-07-06T01:00",
+      "in_arr": "2026-07-07T07:40",
+      "out_times": null,
+      "in_times": null,
       "lat": 42.561388888888885,
       "lon": 18.26833333333333,
       "booking": "https://www.booking.com/searchresults.html?ss=Dubrovnik%2C+Croatia&checkin=2026-07-05&checkout=2026-07-07&group_adults=4&no_rooms=1&group_children=0",
-      "total": 692.6
+      "total": 692.6,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 883,
+      "duration_min": 106,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -155,10 +311,28 @@
       "price": 178.0,
       "out_date": "2026-09-22",
       "in_date": "2026-09-27",
+      "out_times": [
+        "06:00",
+        "06:05"
+      ],
+      "in_times": [
+        "08:30",
+        "09:00",
+        "21:55"
+      ],
+      "out_arr": "~08:24",
+      "in_arr": "~10:54",
       "lat": 51.874722222222225,
       "lon": -0.3683333333333333,
       "booking": "https://www.booking.com/searchresults.html?ss=London+Luton%2C+United+Kingdom&checkin=2026-09-22&checkout=2026-09-27&group_adults=4&no_rooms=1&group_children=0",
-      "total": 712.0
+      "total": 712.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1361,
+      "duration_min": 144,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -168,10 +342,28 @@
       "price": 178.0,
       "out_date": "2026-09-22",
       "in_date": "2026-09-27",
+      "out_times": [
+        "06:00",
+        "06:05"
+      ],
+      "in_times": [
+        "08:30",
+        "09:00",
+        "21:55"
+      ],
+      "out_arr": "~08:23",
+      "in_arr": "~10:53",
       "lat": 51.51,
       "lon": -0.11805555555555555,
       "booking": "https://www.booking.com/searchresults.html?ss=London+%28All+Airports%29%2C+United+Kingdom&checkin=2026-09-22&checkout=2026-09-27&group_adults=4&no_rooms=1&group_children=0",
-      "total": 712.0
+      "total": 712.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1345,
+      "duration_min": 143,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -181,10 +373,26 @@
       "price": 192.6,
       "out_date": "2026-09-08",
       "in_date": "2026-09-11",
+      "out_times": [
+        "06:30"
+      ],
+      "in_times": [
+        "09:10",
+        "15:15"
+      ],
+      "out_arr": "~08:26",
+      "in_arr": "~11:06",
       "lat": 41.415,
       "lon": 19.72083333333333,
       "booking": "https://www.booking.com/searchresults.html?ss=Tirana%2C+Albania&checkin=2026-09-08&checkout=2026-09-11&group_adults=4&no_rooms=1&group_children=0",
-      "total": 770.4
+      "total": 770.4,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1010,
+      "duration_min": 116,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -194,10 +402,25 @@
       "price": 203.2,
       "out_date": "2026-08-30",
       "in_date": "2026-09-03",
+      "out_times": [
+        "14:00"
+      ],
+      "in_times": [
+        "09:15"
+      ],
+      "out_arr": "~15:46",
+      "in_arr": "~11:01",
       "lat": 42.561388888888885,
       "lon": 18.26833333333333,
       "booking": "https://www.booking.com/searchresults.html?ss=Dubrovnik%2C+Croatia&checkin=2026-08-30&checkout=2026-09-03&group_adults=4&no_rooms=1&group_children=0",
-      "total": 812.8
+      "total": 812.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 883,
+      "duration_min": 106,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -207,10 +430,25 @@
       "price": 203.2,
       "out_date": "2026-08-30",
       "in_date": "2026-09-02",
+      "out_times": [
+        "20:25"
+      ],
+      "in_times": [
+        "14:05"
+      ],
+      "out_arr": "~22:30",
+      "in_arr": "~16:10",
       "lat": 40.88611111111111,
       "lon": 14.291666666666666,
       "booking": "https://www.booking.com/searchresults.html?ss=Naples%2C+Italy&checkin=2026-08-30&checkout=2026-09-02&group_adults=4&no_rooms=1&group_children=0",
-      "total": 812.8
+      "total": 812.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1130,
+      "duration_min": 125,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -220,10 +458,25 @@
       "price": 203.2,
       "out_date": "2026-07-18",
       "in_date": "2026-07-23",
+      "out_times": [
+        "16:50"
+      ],
+      "in_times": [
+        "17:45"
+      ],
+      "out_arr": "~18:19",
+      "in_arr": "~19:14",
       "lat": 45.215833333333336,
       "lon": 14.568333333333333,
       "booking": "https://www.booking.com/searchresults.html?ss=Rijeka%2C+Croatia&checkin=2026-07-18&checkout=2026-07-23&group_adults=4&no_rooms=1&group_children=0",
-      "total": 812.8
+      "total": 812.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 675,
+      "duration_min": 89,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -233,10 +486,25 @@
       "price": 203.2,
       "out_date": "2026-08-10",
       "in_date": "2026-08-14",
+      "out_times": [
+        "11:20"
+      ],
+      "in_times": [
+        "13:40"
+      ],
+      "out_arr": "~13:04",
+      "in_arr": "~15:24",
       "lat": 44.020833333333336,
       "lon": 12.612222222222222,
       "booking": "https://www.booking.com/searchresults.html?ss=Rimini%2C+Italy&checkin=2026-08-10&checkout=2026-08-14&group_adults=4&no_rooms=1&group_children=0",
-      "total": 812.8
+      "total": 812.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 868,
+      "duration_min": 104,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -246,10 +514,25 @@
       "price": 203.2,
       "out_date": "2026-08-13",
       "in_date": "2026-08-18",
+      "out_times": [
+        "19:45"
+      ],
+      "in_times": [
+        "21:50"
+      ],
+      "out_arr": "~22:04",
+      "in_arr": "~00:09 +1d",
       "lat": 38.90833333333333,
       "lon": 16.241666666666667,
       "booking": "https://www.booking.com/searchresults.html?ss=Lamezia+Terme%2C+Italy&checkin=2026-08-13&checkout=2026-08-18&group_adults=4&no_rooms=1&group_children=0",
-      "total": 812.8
+      "total": 812.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1306,
+      "duration_min": 139,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -259,10 +542,28 @@
       "price": 208.0,
       "out_date": "2026-09-26",
       "in_date": "2026-09-29",
+      "out_times": [
+        "10:45",
+        "12:45"
+      ],
+      "in_times": [
+        "09:00",
+        "13:15",
+        "15:20"
+      ],
+      "out_arr": "~12:37",
+      "in_arr": "~10:52",
       "lat": 51.45,
       "lon": 5.374444444444444,
       "booking": "https://www.booking.com/searchresults.html?ss=Eindhoven%2C+Netherlands&checkin=2026-09-26&checkout=2026-09-29&group_adults=4&no_rooms=1&group_children=0",
-      "total": 832.0
+      "total": 832.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 965,
+      "duration_min": 112,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -272,10 +573,25 @@
       "price": 212.2,
       "out_date": "2026-08-30",
       "in_date": "2026-09-02",
+      "out_times": [
+        "06:45"
+      ],
+      "in_times": [
+        "20:50"
+      ],
+      "out_arr": "~09:23",
+      "in_arr": "~23:28",
       "lat": 36.99472222222222,
       "lon": 14.606944444444444,
       "booking": "https://www.booking.com/searchresults.html?ss=Comiso+%28Sicily%29%2C+Italy&checkin=2026-08-30&checkout=2026-09-02&group_adults=4&no_rooms=1&group_children=0",
-      "total": 848.8
+      "total": 848.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1542,
+      "duration_min": 158,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -285,10 +601,21 @@
       "price": 216.28,
       "out_date": "2026-07-05T16:15",
       "in_date": "2026-07-07T18:25",
+      "out_arr": "2026-07-05T18:20",
+      "in_arr": "2026-07-07T20:35",
+      "out_times": null,
+      "in_times": null,
       "lat": 41.80027777777777,
       "lon": 12.238888888888889,
       "booking": "https://www.booking.com/searchresults.html?ss=Rome%2C+Italy&checkin=2026-07-05&checkout=2026-07-07&group_adults=4&no_rooms=1&group_children=0",
-      "total": 865.12
+      "total": 865.12,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 1099,
+      "duration_min": 123,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -298,10 +625,25 @@
       "price": 221.2,
       "out_date": "2026-08-31",
       "in_date": "2026-09-04",
+      "out_times": [
+        "04:30"
+      ],
+      "in_times": [
+        "08:25"
+      ],
+      "out_arr": "~07:04",
+      "in_arr": "~10:59",
       "lat": 37.46666666666667,
       "lon": 15.06388888888889,
       "booking": "https://www.booking.com/searchresults.html?ss=Catania+%28Sicily%29%2C+Italy&checkin=2026-08-31&checkout=2026-09-04&group_adults=4&no_rooms=1&group_children=0",
-      "total": 884.8
+      "total": 884.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1482,
+      "duration_min": 154,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -311,10 +653,28 @@
       "price": 221.2,
       "out_date": "2026-07-09",
       "in_date": "2026-07-14",
+      "out_times": [
+        "06:15",
+        "15:45"
+      ],
+      "in_times": [
+        "08:35",
+        "12:25",
+        "16:30"
+      ],
+      "out_arr": "~07:55",
+      "in_arr": "~10:15",
       "lat": 51.51833333333333,
       "lon": 7.612222222222222,
       "booking": "https://www.booking.com/searchresults.html?ss=Dortmund%2C+Germany&checkin=2026-07-09&checkout=2026-07-14&group_adults=4&no_rooms=1&group_children=0",
-      "total": 884.8
+      "total": 884.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 810,
+      "duration_min": 100,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -324,10 +684,25 @@
       "price": 221.2,
       "out_date": "2026-08-29",
       "in_date": "2026-09-02",
+      "out_times": [
+        "07:00"
+      ],
+      "in_times": [
+        "08:50"
+      ],
+      "out_arr": "~08:47",
+      "in_arr": "~10:37",
       "lat": 42.358333333333334,
       "lon": 19.251944444444444,
       "booking": "https://www.booking.com/searchresults.html?ss=Podgorica%2C+Montenegro&checkin=2026-08-29&checkout=2026-09-02&group_adults=4&no_rooms=1&group_children=0",
-      "total": 884.8
+      "total": 884.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 904,
+      "duration_min": 107,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -337,10 +712,21 @@
       "price": 226.84,
       "out_date": "2026-09-27T17:55",
       "in_date": "2026-10-01T09:15",
+      "out_arr": "2026-09-27T20:25",
+      "in_arr": "2026-10-01T11:45",
+      "out_times": null,
+      "in_times": null,
       "lat": 37.46666666666667,
       "lon": 15.06388888888889,
       "booking": "https://www.booking.com/searchresults.html?ss=Catania%2C+Italy&checkin=2026-09-27&checkout=2026-10-01&group_adults=4&no_rooms=1&group_children=0",
-      "total": 907.36
+      "total": 907.36,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 1482,
+      "duration_min": 154,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -350,10 +736,27 @@
       "price": 228.0,
       "out_date": "2026-09-28",
       "in_date": "2026-10-02",
+      "out_times": [
+        "19:20",
+        "20:35"
+      ],
+      "in_times": [
+        "21:40",
+        "23:05"
+      ],
+      "out_arr": "~20:59",
+      "in_arr": "~23:19",
       "lat": 43.525,
       "lon": 16.292222222222225,
       "booking": "https://www.booking.com/searchresults.html?ss=Split%2C+Croatia&checkin=2026-09-28&checkout=2026-10-02&group_adults=4&no_rooms=1&group_children=0",
-      "total": 912.0
+      "total": 912.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 802,
+      "duration_min": 99,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -363,10 +766,21 @@
       "price": 228.87,
       "out_date": "2026-09-29T18:55",
       "in_date": "2026-10-01T06:35",
+      "out_arr": "2026-09-29T21:35",
+      "in_arr": "2026-10-01T09:10",
+      "out_times": null,
+      "in_times": null,
       "lat": 35.9,
       "lon": 14.516666666666667,
       "booking": "https://www.booking.com/searchresults.html?ss=Malta%2C+Malta&checkin=2026-09-29&checkout=2026-10-01&group_adults=4&no_rooms=1&group_children=0",
-      "total": 915.48
+      "total": 915.48,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 1662,
+      "duration_min": 168,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -376,10 +790,25 @@
       "price": 239.2,
       "out_date": "2026-08-30",
       "in_date": "2026-09-03",
+      "out_times": [
+        "06:30"
+      ],
+      "in_times": [
+        "09:05"
+      ],
+      "out_arr": "~08:29",
+      "in_arr": "~11:04",
       "lat": 43.231944444444444,
       "lon": 27.825,
       "booking": "https://www.booking.com/searchresults.html?ss=Varna+%28Black+Sea%29%2C+Bulgaria&checkin=2026-08-30&checkout=2026-09-03&group_adults=4&no_rooms=1&group_children=0",
-      "total": 956.8
+      "total": 956.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1044,
+      "duration_min": 119,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -389,10 +818,25 @@
       "price": 248.2,
       "out_date": "2026-08-19",
       "in_date": "2026-08-23",
+      "out_times": [
+        "11:20"
+      ],
+      "in_times": [
+        "08:35"
+      ],
+      "out_arr": "~13:23",
+      "in_arr": "~10:38",
       "lat": 40.658055555555556,
       "lon": 17.946666666666665,
       "booking": "https://www.booking.com/searchresults.html?ss=Brindisi%2C+Italy&checkin=2026-08-19&checkout=2026-08-23&group_adults=4&no_rooms=1&group_children=0",
-      "total": 992.8
+      "total": 992.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1096,
+      "duration_min": 123,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -402,10 +846,25 @@
       "price": 248.2,
       "out_date": "2026-08-31",
       "in_date": "2026-09-02",
+      "out_times": [
+        "18:00"
+      ],
+      "in_times": [
+        "09:00"
+      ],
+      "out_arr": "~20:48",
+      "in_arr": "~11:48",
       "lat": 35.9,
       "lon": 14.516666666666667,
       "booking": "https://www.booking.com/searchresults.html?ss=Malta%2C+Malta&checkin=2026-08-31&checkout=2026-09-02&group_adults=4&no_rooms=1&group_children=0",
-      "total": 992.8
+      "total": 992.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1662,
+      "duration_min": 168,
+      "est_arrival": true
     },
     {
       "source": "Wizz",
@@ -415,10 +874,25 @@
       "price": 248.2,
       "out_date": "2026-08-29",
       "in_date": "2026-09-03",
+      "out_times": [
+        "18:40"
+      ],
+      "in_times": [
+        "14:05"
+      ],
+      "out_arr": "~20:38",
+      "in_arr": "~16:03",
       "lat": 41.184999999999995,
       "lon": 20.743055555555557,
       "booking": "https://www.booking.com/searchresults.html?ss=Ohrid%2C+North+Macedonia&checkin=2026-08-29&checkout=2026-09-03&group_adults=4&no_rooms=1&group_children=0",
-      "total": 992.8
+      "total": 992.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1042,
+      "duration_min": 118,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -428,10 +902,21 @@
       "price": 248.25,
       "out_date": "2026-08-23T11:55",
       "in_date": "2026-08-25T08:40",
+      "out_arr": "2026-08-23T13:55",
+      "in_arr": "2026-08-25T10:35",
+      "out_times": null,
+      "in_times": null,
       "lat": 41.14111111111111,
       "lon": 16.788333333333334,
       "booking": "https://www.booking.com/searchresults.html?ss=Bari%2C+Italy&checkin=2026-08-23&checkout=2026-08-25&group_adults=4&no_rooms=1&group_children=0",
-      "total": 993.0
+      "total": 993.0,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 1054,
+      "duration_min": 119,
+      "est_arrival": false
     },
     {
       "source": "Ryanair",
@@ -441,23 +926,21 @@
       "price": 269.87,
       "out_date": "2026-09-27T15:00",
       "in_date": "2026-09-29T07:15",
+      "out_arr": "2026-09-27T16:35",
+      "in_arr": "2026-09-29T10:40",
+      "out_times": null,
+      "in_times": null,
       "lat": null,
       "lon": null,
       "booking": "https://www.booking.com/searchresults.html?ss=Manchester%2C+United+Kingdom&checkin=2026-09-27&checkout=2026-09-29&group_adults=4&no_rooms=1&group_children=0",
-      "total": 1079.48
-    },
-    {
-      "source": "Wizz",
-      "city": "Madrid",
-      "country": "Spain",
-      "iata": "MAD",
-      "price": 275.2,
-      "out_date": "2026-08-19",
-      "in_date": "2026-08-21",
-      "lat": 40.493611111111115,
-      "lon": -3.5666666666666664,
-      "booking": "https://www.booking.com/searchresults.html?ss=Madrid%2C+Spain&checkin=2026-08-19&checkout=2026-08-21&group_adults=4&no_rooms=1&group_children=0",
-      "total": 1100.8
+      "total": 1079.48,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": null,
+      "duration_min": null,
+      "est_arrival": false
     },
     {
       "source": "Wizz",
@@ -467,10 +950,57 @@
       "price": 285.6,
       "out_date": "2026-08-21",
       "in_date": "2026-08-26",
+      "out_times": [
+        "05:35",
+        "12:35",
+        "16:30"
+      ],
+      "in_times": [
+        "09:35",
+        "16:10",
+        "20:05"
+      ],
+      "out_arr": "~08:23",
+      "in_arr": "~12:23",
       "lat": 41.29694444444444,
       "lon": 2.0783333333333336,
       "booking": "https://www.booking.com/searchresults.html?ss=Barcelona+El+Prat%2C+Spain&checkin=2026-08-21&checkout=2026-08-26&group_adults=4&no_rooms=1&group_children=0",
-      "total": 1142.4
+      "total": 1142.4,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 1659,
+      "duration_min": 168,
+      "est_arrival": true
+    },
+    {
+      "source": "Wizz",
+      "city": "Madrid",
+      "country": "Spain",
+      "iata": "MAD",
+      "price": 293.2,
+      "out_date": "2026-08-19",
+      "in_date": "2026-08-21",
+      "out_times": [
+        "15:15"
+      ],
+      "in_times": [
+        "19:35"
+      ],
+      "out_arr": "~18:36",
+      "in_arr": "~22:56",
+      "lat": 40.493611111111115,
+      "lon": -3.5666666666666664,
+      "booking": "https://www.booking.com/searchresults.html?ss=Madrid%2C+Spain&checkin=2026-08-19&checkout=2026-08-21&group_adults=4&no_rooms=1&group_children=0",
+      "total": 1172.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata"
+      },
+      "distance_km": 2073,
+      "duration_min": 201,
+      "est_arrival": true
     },
     {
       "source": "Ryanair",
@@ -480,10 +1010,21 @@
       "price": 294.7,
       "out_date": "2026-09-22T20:15",
       "in_date": "2026-09-24T05:50",
+      "out_arr": "2026-09-22T23:35",
+      "in_arr": "2026-09-24T08:55",
+      "out_times": null,
+      "in_times": null,
       "lat": 38.282222222222224,
       "lon": -0.5580555555555556,
       "booking": "https://www.booking.com/searchresults.html?ss=Alicante%2C+Spain&checkin=2026-09-22&checkout=2026-09-24&group_adults=4&no_rooms=1&group_children=0",
-      "total": 1178.8
+      "total": 1178.8,
+      "baggage": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata"
+      },
+      "distance_km": 2057,
+      "duration_min": 200,
+      "est_arrival": false
     }
   ]
 }

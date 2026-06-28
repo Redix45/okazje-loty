@@ -38,6 +38,18 @@
   .btn{font-size:12px;text-decoration:none;padding:5px 9px;border-radius:7px;border:1px solid var(--line);color:var(--txt)}
   .btn.book{background:#003b95;border-color:#003b95;color:#fff}
   .empty{color:var(--mut);padding:30px;text-align:center}
+  .card{cursor:pointer}
+  .card.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .detail{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;line-height:1.5}
+  .card.active .detail{display:block}
+  .leg{display:flex;gap:8px;align-items:baseline;margin:2px 0}
+  .leg .t{font-weight:600;color:var(--txt)}
+  .leg .d{color:var(--mut);font-size:12px}
+  .meta2{color:var(--mut);font-size:12px;margin:6px 0}
+  .bag{margin-top:6px;font-size:12px;color:var(--mut)}
+  .bag b{color:#cfe;display:block;margin-top:4px}
+  .est{color:#f0b}
+  .plane{font-size:18px;filter:drop-shadow(0 0 3px #000)}
 </style>
 </head>
 <body>
@@ -69,12 +81,43 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const PLN = n => Math.round(n).toLocaleString('pl-PL') + ' zł';
-let DATA = {deals:[], origin:'KTW', pax:4}, MAP, MARKERS, OFF = new Set();
+let DATA = {deals:[], origin:'KTW', pax:4}, MARKERS, ARC, OFF = new Set(), SEL = null;
 
 const map = L.map('map', {scrollWheelZoom:true}).setView([50, 14], 4);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
   {attribution:'© OpenStreetMap © CARTO', maxZoom:10}).addTo(map);
 MARKERS = L.layerGroup().addTo(map);
+ARC = L.layerGroup().addTo(map);
+
+// Łuk wielkokołowy (krzywa) origin -> cel, próbkowany bezierem.
+function arcPoints(a, b, bend=0.2){
+  const mx=(a[0]+b[0])/2, my=(a[1]+b[1])/2;
+  const dx=b[0]-a[0], dy=b[1]-a[1];
+  const cx=mx - dy*bend, cy=my + dx*bend;   // punkt kontrolny prostopadle
+  const pts=[];
+  for(let t=0;t<=1;t+=1/40){
+    const u=1-t;
+    pts.push([u*u*a[0]+2*u*t*cx+t*t*b[0], u*u*a[1]+2*u*t*cy+t*t*b[1]]);
+  }
+  return pts;
+}
+
+function drawArc(x){
+  ARC.clearLayers();
+  const o=[DATA.origin_lat, DATA.origin_lon];
+  if(o[0]==null || x.lat==null) return;
+  const dest=[x.lat, x.lon];
+  const col = x.source==='Wizz' ? '#ec4899' : '#3b82f6';
+  const pts = arcPoints(o, dest);
+  L.polyline(pts, {color:col, weight:2.5, opacity:.9, dashArray:'6 6'}).addTo(ARC);
+  L.circleMarker(o, {radius:6, color:'#22d3aa', fillColor:'#22d3aa', fillOpacity:1, weight:1})
+    .bindTooltip(DATA.origin, {permanent:false}).addTo(ARC);
+  L.circleMarker(dest, {radius:7, color:col, fillColor:col, fillOpacity:1, weight:1})
+    .bindTooltip(x.city, {permanent:false}).addTo(ARC);
+  const mid = pts[Math.floor(pts.length/2)];
+  L.marker(mid, {icon:L.divIcon({className:'', html:'<span class="plane">✈️</span>', iconSize:[20,20]})}).addTo(ARC);
+  map.fitBounds(L.latLngBounds([o, dest]).pad(0.4));
+}
 
 function visible(){
   const maxP = +document.getElementById('price').value;
@@ -85,20 +128,57 @@ function visible(){
   return d;
 }
 
+// Formatuje odcinek lotu: zwraca {date, dep, arr}.
+// Ryanair: out_date = 'YYYY-MM-DDTHH:MM', out_arr = '...THH:MM'.
+// Wizz: out_date = 'YYYY-MM-DD', out_times = ['HH:MM',...], out_arr = '~HH:MM'.
+function leg(dateField, arrField, timesField){
+  const dt = dateField || '';
+  const hasT = dt.includes('T');
+  const date = hasT ? dt.slice(0,10) : dt.slice(0,10);
+  let dep;
+  if(hasT) dep = dt.slice(11,16);
+  else if(timesField && timesField.length) dep = timesField.join(' / ');
+  else dep = '—';
+  let arr = '—';
+  if(arrField) arr = arrField.includes('T') ? arrField.slice(11,16) : arrField;
+  return {date, dep, arr};
+}
+
+function detailHTML(x){
+  const o = leg(x.out_date, x.out_arr, x.out_times);
+  const r = leg(x.in_date, x.in_arr, x.in_times);
+  const dur = x.duration_min ? `${Math.floor(x.duration_min/60)}h ${x.duration_min%60}m` : '—';
+  const dist = x.distance_km ? `${x.distance_km} km` : '—';
+  const est = x.est_arrival ? ' <span class="est">(przylot ~szacowany)</span>' : '';
+  const b = x.baggage || {};
+  return `
+    <div class="detail">
+      <div class="leg"><span>🛫</span><span class="t">${DATA.origin} → ${x.iata}</span>
+        <span class="d">${o.date} · odlot ${o.dep} → przylot ${o.arr}${est}</span></div>
+      <div class="leg"><span>🛬</span><span class="t">${x.iata} → ${DATA.origin}</span>
+        <span class="d">${r.date} · odlot ${r.dep} → przylot ${r.arr}</span></div>
+      <div class="meta2">⏱ czas lotu ${dur} · 📏 ${dist}</div>
+      <div class="bag">🧳 Bagaż (${x.source}):
+        <b>✅ ${b.free||'—'}</b>
+        <span>➕ ${b.paid||'—'}</span></div>
+    </div>`;
+}
+
 function render(){
   const d = visible();
   const list = document.getElementById('list');
-  MARKERS.clearLayers();
+  MARKERS.clearLayers(); ARC.clearLayers(); SEL = null;
   if(!d.length){ list.innerHTML = '<div class="empty">Brak ofert dla tych filtrów.</div>'; return; }
-  list.innerHTML = d.map(x => `
-    <div class="card" data-iata="${x.iata}">
-      <div>
+  list.innerHTML = d.map((x,i) => `
+    <div class="card" data-i="${i}">
+      <div style="flex:1">
         <div class="city">${x.city}<span class="src ${x.source}">${x.source}</span></div>
         <div class="sub">${x.country||''} · ${DATA.origin} → ${x.iata}</div>
-        <div class="sub">🛫 ${x.out_date} → 🛬 ${x.in_date}</div>
+        <div class="sub">🛫 ${x.out_date.slice(0,10)} → 🛬 ${x.in_date.slice(0,10)} · klik = szczegóły + trasa</div>
         <div class="acts">
-          <a class="btn book" href="${x.booking}" target="_blank" rel="noopener">🏨 Hotel (${DATA.pax} os.)</a>
+          <a class="btn book" href="${x.booking}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🏨 Hotel (${DATA.pax} os.)</a>
         </div>
+        ${detailHTML(x)}
       </div>
       <div class="price">
         <div class="pp">${PLN(x.price)}</div>
@@ -106,13 +186,26 @@ function render(){
       </div>
     </div>`).join('');
 
-  d.forEach(x => {
+  const cards = [...list.querySelectorAll('.card')];
+  cards.forEach(card => card.addEventListener('click', () => selectDeal(+card.dataset.i, card, d)));
+
+  // Markery (klik = wybór tej oferty).
+  d.forEach((x,i) => {
     if(x.lat == null || x.lon == null) return;
     const col = x.source === 'Wizz' ? '#ec4899' : '#3b82f6';
-    L.circleMarker([x.lat, x.lon], {radius:7, color:col, fillColor:col, fillOpacity:.85, weight:1})
-      .bindPopup(`<b>${x.city}</b> (${x.source})<br>${PLN(x.price)}/os · razem ${PLN(x.total)}<br>${x.out_date} → ${x.in_date}<br><a href="${x.booking}" target="_blank">🏨 Hotel</a>`)
+    L.circleMarker([x.lat, x.lon], {radius:6, color:col, fillColor:col, fillOpacity:.7, weight:1})
+      .on('click', () => { const c = cards[i]; selectDeal(i, c, d); c.scrollIntoView({behavior:'smooth', block:'center'}); })
+      .bindTooltip(`${x.city} · ${PLN(x.price)}/os`)
       .addTo(MARKERS);
   });
+}
+
+function selectDeal(i, card, d){
+  document.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
+  if(SEL === i){ SEL = null; ARC.clearLayers(); return; }   // ponowny klik = zwiń
+  SEL = i;
+  card.classList.add('active');
+  drawArc(d[i]);
 }
 
 document.getElementById('price').addEventListener('input', e => {

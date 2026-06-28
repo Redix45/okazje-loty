@@ -57,6 +57,49 @@ RYANAIR_LIMIT = 16
 
 WIZZ_COORDS = {}   # iata -> (lat, lon, city, country); do backfillu mapy Ryanair
 
+# Wspolrzedne lotnisk startowych (fallback gdy brak w mapie Wizz).
+ORIGIN_COORDS = {
+    "KTW": (50.4743, 19.0800), "KRK": (50.0777, 19.7848),
+    "WAW": (52.1657, 20.9671), "WMI": (52.4511, 20.6518),
+    "GDN": (54.3776, 18.4662), "WRO": (51.1027, 16.8858),
+    "POZ": (52.4210, 16.8263),
+}
+
+# Zasady bagazu (stale, nie ma w API). Aktualizuj gdy linie zmienia cennik.
+BAGGAGE = {
+    "Ryanair": {
+        "free": "1 mała torba pod fotel 40×20×25 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (55×40×20) — Priority, dopłata · Walizka 20 kg — dopłata",
+    },
+    "Wizz": {
+        "free": "1 mała torba pod fotel 40×30×20 cm (gratis)",
+        "paid": "Bagaż podręczny 10 kg (WIZZ Priority) — dopłata · Walizka 10–32 kg — dopłata",
+    },
+}
+
+
+def haversine_km(lat1, lon1, lat2, lon2):
+    import math
+    r = 6371.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return round(2 * r * math.asin(math.sqrt(a)))
+
+
+def add_minutes(hhmm, minutes):
+    """'05:30' + minuty -> 'HH:MM' (bez przekroczenia doby oznacz +1)."""
+    try:
+        h, m = map(int, hhmm.split(":"))
+    except Exception:
+        return None
+    tot = h * 60 + m + minutes
+    nd = tot // (24 * 60)
+    tot %= 24 * 60
+    s = f"{tot // 60:02d}:{tot % 60:02d}"
+    return s + (f" +{nd}d" if nd else "")
+
 
 # ─────────────────────────── POMOCNICZE ───────────────────────────
 def daterange():
@@ -149,6 +192,9 @@ def ryanair_fares():
             "price": round(float(price), 2),
             "out_date": (ob.get("departureDate") or "")[:16],
             "in_date": (ib.get("departureDate") or "")[:16],
+            "out_arr": (ob.get("arrivalDate") or "")[:16],   # przylot (dokladny)
+            "in_arr": (ib.get("arrivalDate") or "")[:16],
+            "out_times": None, "in_times": None,
             "lat": None, "lon": None,
         })
     return out
@@ -227,8 +273,9 @@ def wizz_route_deals(iata, ver, proxies, coords):
             day = (f.get("departureDate") or "")[:10]
             if not amt or amt <= 0 or not day:
                 continue
-            if day not in acc or amt < acc[day]:
-                acc[day] = amt
+            times = sorted({(t or "")[11:16] for t in f.get("departureDates", []) if t})
+            if day not in acc or amt < acc[day][0]:
+                acc[day] = (amt, times)
 
     outb, retb = {}, {}
     for cf, ct in _wizz_chunks():
@@ -245,14 +292,14 @@ def wizz_route_deals(iata, ver, proxies, coords):
         return None
 
     best = None
-    for od, op in outb.items():
+    for od, (op, ot) in outb.items():
         o = date.fromisoformat(od)
         for n in range(CONFIG["nights_from"], CONFIG["nights_to"] + 1):
             rd = (o + timedelta(days=n)).isoformat()
             if rd in retb:
-                total = op + retb[rd]
+                total = op + retb[rd][0]
                 if best is None or total < best[0]:
-                    best = (total, od, rd)
+                    best = (total, od, rd, ot, retb[rd][1])
     if best is None or best[0] > CONFIG["max_price_pln"]:
         return None
 
@@ -264,6 +311,8 @@ def wizz_route_deals(iata, ver, proxies, coords):
         "iata": iata,
         "price": round(best[0], 2),
         "out_date": best[1], "in_date": best[2],
+        "out_times": best[3], "in_times": best[4],   # godziny odlotu (Wizz)
+        "out_arr": None, "in_arr": None,             # przylot szacowany w deals.json
         "lat": lat, "lon": lon,
     }
 
@@ -323,14 +372,45 @@ def save_seen(seen):
               ensure_ascii=False, indent=0)
 
 
+def origin_latlon():
+    if CONFIG["origin"] in WIZZ_COORDS:
+        la, lo, _c, _co = WIZZ_COORDS[CONFIG["origin"]]
+        if la is not None:
+            return la, lo
+    return ORIGIN_COORDS.get(CONFIG["origin"], (None, None))
+
+
+def enrich(d, olat, olon):
+    out = dict(d, booking=booking_link(d), total=round(d["price"] * CONFIG["pax"], 2))
+    out["baggage"] = BAGGAGE.get(d["source"], {})
+    # Dystans + szacowany czas lotu (≈750 km/h + 35 min kołowanie).
+    dist = dur = None
+    if d.get("lat") is not None and olat is not None:
+        dist = haversine_km(olat, olon, d["lat"], d["lon"])
+        dur = round(dist / 750 * 60) + 35
+    out["distance_km"] = dist
+    out["duration_min"] = dur
+    # Wizz: przylot szacowany z pierwszej godziny odlotu + czas lotu (oznacz ~).
+    if d["source"] == "Wizz" and dur:
+        ot = (d.get("out_times") or [None])[0]
+        it = (d.get("in_times") or [None])[0]
+        out["out_arr"] = ("~" + add_minutes(ot, dur)) if ot else None
+        out["in_arr"] = ("~" + add_minutes(it, dur)) if it else None
+        out["est_arrival"] = True
+    else:
+        out["est_arrival"] = False
+    return out
+
+
 def write_deals_json(deals):
+    olat, olon = origin_latlon()
     payload = {
         "generated": date.today().isoformat(),
         "origin": CONFIG["origin"],
+        "origin_lat": olat, "origin_lon": olon,
         "pax": CONFIG["pax"],
         "max_price_pln": CONFIG["max_price_pln"],
-        "deals": [dict(d, booking=booking_link(d), total=round(d["price"] * CONFIG["pax"], 2))
-                  for d in deals],
+        "deals": [enrich(d, olat, olon) for d in deals],
     }
     json.dump(payload, open(CONFIG["deals_out"], "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
