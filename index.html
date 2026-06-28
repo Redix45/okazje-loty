@@ -16,9 +16,15 @@
   h1{font-size:20px;margin:0}
   .meta{color:var(--mut);font-size:13px}
   .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:calc(100vh - 64px)}
-  @media(max-width:900px){.wrap{grid-template-columns:1fr}#map{height:320px}}
   #map{height:calc(100vh - 64px);position:sticky;top:0}
   .panel{padding:16px 20px;overflow:auto;max-height:calc(100vh - 64px)}
+  @media(max-width:900px){
+    body{overflow-x:hidden}
+    .wrap{grid-template-columns:1fr;min-height:0}
+    /* mapa przyklejona u gory — luk lotu widoczny przy przewijaniu listy */
+    #map{height:44vh;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+    .panel{max-height:none;overflow:visible}  /* bez zagniezdzonego scrolla */
+  }
   .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center}
   .controls label{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:6px}
   select,input[type=range]{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px}
@@ -51,6 +57,21 @@
   .bag b{color:#cfe;display:block;margin-top:4px}
   .est{color:#f0b}
   .plane{font-size:18px;filter:drop-shadow(0 0 3px #000)}
+  /* Telefon — po regulach bazowych, zeby je nadpisac (rownania specyficznosc) */
+  @media(max-width:560px){
+    header{padding:12px 14px;gap:6px}
+    h1{font-size:18px}
+    .meta{font-size:12px;width:100%}
+    .panel{padding:12px}
+    .controls{gap:8px}
+    .controls label{font-size:12px}
+    .card{padding:11px 12px;gap:10px}
+    .city{font-size:14px}
+    .pp{font-size:17px}
+    .acts{flex-wrap:wrap;gap:8px}
+    .btn{padding:11px 14px;font-size:13px}   /* wiekszy tap target */
+    input[type=range]{width:84px}
+  }
 </style>
 </head>
 <body>
@@ -209,6 +230,11 @@ function selectDeal(i, card, d){
   SEL = i;
   card.classList.add('active');
   drawArc(d[i]);
+  // Telefon: pokaz mape z lukiem (jest sticky u gory).
+  if(window.innerWidth <= 900){
+    window.scrollTo({top:0, behavior:'smooth'});
+    setTimeout(() => map.invalidateSize(), 350);
+  }
 }
 
 document.getElementById('price').addEventListener('input', e => {
@@ -216,6 +242,7 @@ document.getElementById('price').addEventListener('input', e => {
 });
 document.getElementById('country').addEventListener('change', render);
 document.getElementById('sort').addEventListener('change', render);
+window.addEventListener('resize', () => map.invalidateSize());
 document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
   c.classList.toggle('on');
   if(c.classList.contains('on')) OFF.delete(c.dataset.src); else OFF.add(c.dataset.src);
